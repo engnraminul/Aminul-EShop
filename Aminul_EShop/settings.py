@@ -132,6 +132,9 @@ MEDIA_URL = '/media/'
 
 LOGIN_URL = '/'
 
+#custom User models
+AUTH_USER_MODEL = 'Login.User'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
