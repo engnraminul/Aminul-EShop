@@ -13,5 +13,6 @@ class ProfileForm(ModelForm):
 
 class RegistrationForm(UserCreationForm):
     class Meta:
-        model = user
-        fields = ('email', 'password_1', 'password_2',)
+        model = User
+        fields = ('email', 'password',)
+        #fields = ('email', 'password_1', 'password_2',)

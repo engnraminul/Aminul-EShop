@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'Shop',
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -130,7 +130,7 @@ STATICFILES_DIR = [STATIC_DIR,]
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
-LOGIN_URL = '/'
+LOGIN_URL = '/account/signin/'
 
 #custom User models
 AUTH_USER_MODEL = 'Login.User'
