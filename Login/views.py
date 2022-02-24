@@ -36,14 +36,14 @@ def signin(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return HttpResponse('Successfully Login')
+                return HttpResponseRedirect(reverse('Shop:home'))
     return render(request, 'Login/signin.html', context = {'form':form})
 
 @login_required
 def signout(request):
     logout(request)
     messages.warning(request, "You are logout successfully!")
-    return HttpResponse("Signout User")
+    return HttpResponseRedirect(reverse('Shop:home'))
 
 @login_required
 def profile(request):

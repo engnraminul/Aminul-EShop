@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block body %}
+<h2>Home Page</h2>
+{% for product in object_list %}
+{{product.Product_name}}
+{% endfor %}
+{% endblock %}

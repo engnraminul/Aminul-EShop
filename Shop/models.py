@@ -20,7 +20,7 @@ class Product(models.Model):
     Product_name = models.CharField(max_length=250)
     Category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='category')
     sort_details = models.TextField(max_length=300, verbose_name='sort_details')
-    full_details = models.TextField(max_length=300, verbose_name='full_details')
+    full_details = models.TextField(max_length=3000, verbose_name='full_details')
     price = models.FloatField()
     old_price = models.FloatField(default=0.00)
     created_date = models.DateTimeField(auto_now_add=True)
