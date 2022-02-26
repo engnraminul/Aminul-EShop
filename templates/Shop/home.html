@@ -1,10 +1,35 @@
-{% extends 'base.html' %}
+ {% extends 'base.html' %}
 
 {% block title %} Home {% endblock %}
 
 {% block body %}
-<h2>Home Page</h2>
-{% for product in object_list %}
-{{product.Product_name}}
+<div class="container my-5">
+<h2 class="my-5">Products List</h2>
+  <div class="row">
+  {% for product in object_list %}
+    <div class="col-md-6 col-sm-12 col-lg-3">
+    <figure class="card card-product">
+      <div class="img-wrap">
+        <img src="/media/{{product.Product_image}}" alt="" style="width:300px; height:300px;">
+      </div>
+      <figcaption class="info-wrap">
+        <h6 class="title">{{ product.Product_name}}</h6>
+        <div class="action-wrap">
+          <div class="price-wrap h5">
+            <span class="">$ {{product.price|floatformat:2}}</span>
+            <span class="price-old"><strike>$ {{product.old_price|floatformat:2}}</strike></span>
+          </div>
+        </div>
+
+      </figcaption>
+    </figure>
+
+
+    </div>
 {% endfor %}
+  </div>
+</div>
+
+
+
 {% endblock %}
