@@ -4,20 +4,37 @@
 
 {% block body %}
 
-<div class="">
-  <div class="">
-    <div class="">
-      <aside class="">
-        <article class="">
-
+<div class="container my-5">
+  <div class="card">
+    <div class="row">
+      <aside class="col-sm-5 border-right">
+        <article class="gallery-wrap">
+          <div class="img-big-wrap">
+            <div>
+              <a href="#"><img src="/media/{{object.Product_image}}" style="width:450px"></a>
+            </div>
+          </div>
         </article>
-
       </aside>
-
+      <aside class="col-sm-7">
+        <article class="card-body p-5">
+          <h3 class="title mp-3">{{object.Product_name}}</h3>
+          <p class="price-detaiil-wrap">
+            <span class="price h3 text-warning">
+              <span>USD $ </span><span class="num">{{object.price}}</span>
+            </span>
+          </p>
+          <dl class="item-property">
+            <dt>Description</dt>
+            <dd>
+              <p>{{object.sort_details|linebreaks}}</p>
+            </dd>
+          </dl>
+          <a href="#" class="btn btn-lg btn-outline-primary text-uppercase"><i class="fas fa-shopping-card">Add to cart</i></a>
+        </article>
+      </aside>
     </div>
-
   </div>
-
 </div>
 
 
