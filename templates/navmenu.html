@@ -12,7 +12,11 @@
     <ul class="nav navbar-nav navbar-right">
       {% if user.is_authenticated %}
       <li class="nav-item">
+        <a class="nav-link" href="{% url 'Order:cart' %}">Cart</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{% url 'Login:signout' %}">Logout</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'Login:profile' %}"><img class="rounded-circle" width="30px" src="" alt=""> {{profile.full_name}}</a>
       </li>
