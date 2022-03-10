@@ -77,9 +77,41 @@ def increase_quantity(request, pk):
             if order_item.quantity >=1:
                 order_item.quantity +=1
                 order_item.save()
+                messages.info(request, f"{item.Product_name} quantity has been increase!")
+                return redirect("Order:cart")
 
         else:
             messages.info(request, f"{item.Product_name} is not active in your cart!")
+            return redirect("Shop:home")
+
+    else:
+        messages.info(request, "You don't have active order!")
+        return redirect("Shop:home")
+
+
+@login_required
+def decrease_quantity(request, pk):
+    item = get_object_or_404(Product, pk=pk)
+    order_qs = CartToOrder.objects.filter(user=request.user, allready_ordered=False)
+    if order_qs.exists():
+        order = order_qs[0]
+        if order.orderitems.filter(item=item).exists():
+            order_item = Cart.objects.filter(item=item, user=request.user, allready_purchased=False)
+            order_item = order_item[0]
+            if order_item.quantity >1:
+                order_item.quantity -=1
+                order_item.save()
+                messages.info(request, f"{item.Product_name} quantity has been decrease!")
+                return redirect("Order:cart")
+            else:
+                order.orderitems.remove(order_item)
+                order_item.delete()
+                messages.warning(request, f"{item.Product_name} is remove from your cart!")
+                return redirect("Order:cart")
+
+        else:
+            messages.info(request, f"{item.Product_name} is not active in your cart!")
+            return redirect("Shop:home")
 
     else:
         messages.info(request, "You don't have active order!")
