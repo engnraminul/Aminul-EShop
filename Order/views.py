@@ -64,3 +64,23 @@ def remove_from_cart(request, pk):
     else:
         messages.info(request, "You Don't have an active order")
         return redirect("Shop:home")
+
+@login_required
+def increase_quantity(request, pk):
+    item = get_object_or_404(Product, pk=pk)
+    order_qs = CartToOrder.objects.filter(user=request.user, allready_ordered=False)
+    if order_qs.exists():
+        order = order_qs[0]
+        if order.orderitems.filter(item=item).exists():
+            order_item = Cart.objects.filter(item=item, user=request.user, allready_purchased=False)
+            order_item = order_item[0]
+            if order_item.quantity >=1:
+                order_item.quantity +=1
+                order_item.save()
+
+        else:
+            messages.info(request, f"{item.Product_name} is not active in your cart!")
+
+    else:
+        messages.info(request, "You don't have active order!")
+        return redirect("Shop:home")
