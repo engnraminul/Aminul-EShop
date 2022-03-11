@@ -20,6 +20,24 @@
         </div>
       </div>
     </div>
+    <div class="col-md-3">
+      <div class="card" style="height:auto">
+        <div class="card-body">
+          <div class="list-group list-group-flush">
+            {% for order_item in order_items %}
+              <li clas="list-group-item">{{order_item.item.Product_name}} x {{order_item.quantity}}</li>
+            {% endfor %}
+
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="float-left"><b>Total order = </b></span>
+          <span class="float-right"><b>{{order_total|floatformat}}$</b></span>
+
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 {% endblock %}
